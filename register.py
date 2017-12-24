@@ -19,7 +19,8 @@ def h(i, y):
     pwd = str(random.randint(100000, 99999999))
     age = random.randint(1, 150)
     name = ''.join(random.sample(string.ascii_letters + string.digits, random.randint(5, 20)))
-    address = "天津市南开区凯德大厦c座4楼" + str(random.randint(1, 15000))
+    list_string = ['a', 'b', 'c', 'd', 'e']
+    address = "天津市南开区凯德大厦%s座%d楼%04d" %(random.choice(list_string),random.randint(1,18),random.randint(1, 9))
     sex = str(random.randint(0, 1))
     url = "http://localhost:8080/user/register.do"
     data = {"address": address, "age": age, "password": pwd, "sex": sex, "username": name, "phone": user}
@@ -27,8 +28,6 @@ def h(i, y):
     headers = {'Content-Type': "application/json; charset=utf-8"}
     req = urllib2.Request(url=url, headers=headers, data=data)
     print data
-    # html=urllib2.urlopen(req).read()
-    # print(html)
     html = urllib2.urlopen(req).read().decode('utf-8')
 
     print(html)
